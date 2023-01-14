@@ -1,10 +1,11 @@
 import './App.css'
+import AppBar from './components/appBar'
 
 function App() {
 
   return (
-    <div className="App">
-      
+    <div>
+      <AppBar></AppBar>
     </div>
   )
 }
