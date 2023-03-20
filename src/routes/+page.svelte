@@ -1,8 +1,10 @@
 <script>
   import { onMount } from "svelte";
   import axios from "axios";
+  import config from "../auth_config";
 
   onMount(async () => {
+    console.log("config", config);
     axios
       .get("http://localhost:3000/")
       .then((res) => {
