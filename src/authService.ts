@@ -1,34 +1,40 @@
-import { createAuth0Client } from "@auth0/auth0-spa-js";
+import {
+  Auth0Client,
+  createAuth0Client,
+  type PopupLoginOptions,
+} from "@auth0/auth0-spa-js";
 import { user, isAuthenticated, popupOpen } from "./stores/auth";
 import config from "./auth_config";
 
-async function createClient() {
+const createClient = async (): Promise<Auth0Client> => {
   let auth0Client = await createAuth0Client({
     domain: config.domain,
     clientId: config.clientId,
   });
 
   return auth0Client;
-}
+};
 
-async function loginWithPopup(client, options) {
+const loginWithPopup = async (
+  client: Auth0Client,
+  options: PopupLoginOptions
+): Promise<void> => {
   popupOpen.set(true);
   try {
     await client.loginWithPopup(options);
 
-    user.set(await client.getUser());
+    user.set((await client.getUser)<{}>());
     isAuthenticated.set(true);
   } catch (e) {
-    // eslint-disable-next-line
     console.error(e);
   } finally {
     popupOpen.set(false);
   }
-}
+};
 
-function logout(client) {
+const logout = (client: Auth0Client): Promise<void> => {
   return client.logout();
-}
+};
 
 const auth = {
   createClient,
