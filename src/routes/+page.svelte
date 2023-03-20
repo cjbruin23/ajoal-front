@@ -2,9 +2,19 @@
   import { onMount } from "svelte";
   import axios from "axios";
   import config from "../auth_config";
+  import auth from "../authService";
+  import { isAuthenticated, user } from "../stores/authStore";
+
+  let auth0Client;
 
   onMount(async () => {
     console.log("config", config);
+    auth0Client = await auth.createClient();
+    isAuthenticated.set(await auth0Client.isAuthenticated());
+    const auth0User = await auth0Client.getUser();
+    if (!!auth0User) {
+      user.set(auth0User);
+    }
     axios
       .get("http://localhost:3000/")
       .then((res) => {
@@ -14,6 +24,10 @@
         console.log("err", err);
       });
   });
+
+  const login = () => {
+    auth.loginWithPopup(auth);
+  };
 </script>
 
 <h1>Welcome to SvelteKit</h1>
