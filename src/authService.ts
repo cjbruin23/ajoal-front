@@ -1,7 +1,6 @@
 import {
   Auth0Client,
   createAuth0Client,
-  User,
   type PopupLoginOptions,
 } from "@auth0/auth0-spa-js";
 import { user, isAuthenticated, popupOpen } from "./stores/authStore";

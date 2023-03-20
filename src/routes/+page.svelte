@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import axios from "axios";
   import config from "../auth_config";
   import auth from "../authService";
   import { isAuthenticated, user } from "../stores/authStore";
 
-  let auth0Client;
+  let auth0Client: Auth0Client;
 
   onMount(async () => {
     console.log("config", config);
@@ -26,7 +26,12 @@
   });
 
   const login = () => {
-    auth.loginWithPopup(auth);
+    auth.loginWithPopup(auth0Client, {
+      authorizationParams: {
+        display: "popup",
+        prompt: "login",
+      },
+    });
   };
 </script>
 
@@ -34,3 +39,4 @@
 <p>
   Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
 </p>
+<button on:click={login}> Login </button>
