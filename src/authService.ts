@@ -1,5 +1,5 @@
 import { Auth0Client, createAuth0Client } from "@auth0/auth0-spa-js";
-import { user, isAuthenticated, popupOpen } from "./stores/authStore";
+import { user, isAuthenticated, popupOpen, error } from "./stores/authStore";
 import config from "./auth_config";
 
 const createClient = async (): Promise<Auth0Client> => {
@@ -23,17 +23,21 @@ const loginWithPopup = async (client: Auth0Client): Promise<void> => {
     const userFromAuth0 = await client.getUser();
     if (!!userFromAuth0) {
       user.set(userFromAuth0);
+      isAuthenticated.set(true);
     }
     isAuthenticated.set(true);
   } catch (e) {
     console.error(e);
+    error.set(e);
+    isAuthenticated.set(false);
   } finally {
     popupOpen.set(false);
   }
 };
 
-const logout = (client: Auth0Client): Promise<void> => {
-  return client.logout();
+const logout = (client: Auth0Client): void => {
+  client.logout();
+  isAuthenticated.set(false);
 };
 
 const auth = {
