@@ -12,11 +12,9 @@
     isAuthenticated.set(await auth0Client.isAuthenticated());
     const auth0User = await auth0Client.getUser();
     if (!!auth0User) {
-      console.log("auth0user", auth0User);
       user.set(auth0User);
     } else {
-      console.log("no user", auth0User);
-      user.set({});
+      user.set(null);
     }
     axios
       .get("http://localhost:3000/")
