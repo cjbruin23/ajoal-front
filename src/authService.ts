@@ -1,8 +1,4 @@
-import {
-  Auth0Client,
-  createAuth0Client,
-  type PopupLoginOptions,
-} from "@auth0/auth0-spa-js";
+import { Auth0Client, createAuth0Client } from "@auth0/auth0-spa-js";
 import { user, isAuthenticated, popupOpen } from "./stores/authStore";
 import config from "./auth_config";
 
@@ -10,18 +6,20 @@ const createClient = async (): Promise<Auth0Client> => {
   let auth0Client = await createAuth0Client({
     domain: config.domain,
     clientId: config.clientId,
+    authorizationParams: {
+      display: "popup",
+      prompt: "login",
+      redirect_uri: window.location.href,
+    },
   });
 
   return auth0Client;
 };
 
-const loginWithPopup = async (
-  client: Auth0Client,
-  options: PopupLoginOptions
-): Promise<void> => {
+const loginWithPopup = async (client: Auth0Client): Promise<void> => {
   popupOpen.set(true);
   try {
-    await client.loginWithPopup(options);
+    await client.loginWithPopup();
     const userFromAuth0 = await client.getUser();
     if (!!userFromAuth0) {
       user.set(userFromAuth0);
