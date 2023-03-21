@@ -2,20 +2,21 @@
   import { onMount } from "svelte";
   import axios from "axios";
   import auth from "../authService";
-  import { isAuthenticated, user } from "../stores/authStore";
+  import { user } from "../stores/authStore";
   import type { Auth0Client } from "@auth0/auth0-spa-js";
 
   let auth0Client: Auth0Client;
 
   onMount(async () => {
     auth0Client = await auth.createClient();
-    isAuthenticated.set(await auth0Client.isAuthenticated());
     const auth0User = await auth0Client.getUser();
+
     if (!!auth0User) {
       user.set(auth0User);
     } else {
       user.set(null);
     }
+
     axios
       .get("http://localhost:3000/")
       .then((res) => {

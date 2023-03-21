@@ -25,7 +25,6 @@ const loginWithPopup = async (client: Auth0Client): Promise<void> => {
       user.set(userFromAuth0);
       isAuthenticated.set(true);
     }
-    isAuthenticated.set(true);
   } catch (e) {
     console.error(e);
     error.set(e);
