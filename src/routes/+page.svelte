@@ -4,8 +4,9 @@
   import config from "../auth_config";
   import auth from "../authService";
   import { isAuthenticated, user } from "../stores/authStore";
+  import type { Auth0Client } from "@auth0/auth0-spa-js";
 
-  let auth0Client;
+  let auth0Client: Auth0Client;
 
   onMount(async () => {
     console.log("config", config);
