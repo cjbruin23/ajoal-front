@@ -5,7 +5,7 @@
   import auth from "../authService";
   import { isAuthenticated, user } from "../stores/authStore";
 
-  let auth0Client: Auth0Client;
+  let auth0Client;
 
   onMount(async () => {
     console.log("config", config);
