@@ -2,6 +2,7 @@ import { Auth0Client, createAuth0Client } from "@auth0/auth0-spa-js";
 import { user, isAuthenticated, popupOpen, error } from "./stores/authStore";
 import config from "./auth_config";
 
+// The auth0 client utilizes the Authorization Code Grant Flow with PKCE
 const createClient = async (): Promise<Auth0Client> => {
   // This will call getTokenSilently, specifying an audience here
   // means we do not need to do so again later
