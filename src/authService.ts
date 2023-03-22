@@ -3,6 +3,8 @@ import { user, isAuthenticated, popupOpen, error } from "./stores/authStore";
 import config from "./auth_config";
 
 const createClient = async (): Promise<Auth0Client> => {
+  // This will call getTokenSilently, specifying an audience here
+  // means we do not need to do so again later
   let auth0Client = await createAuth0Client({
     domain: config.domain,
     clientId: config.clientId,
@@ -10,6 +12,7 @@ const createClient = async (): Promise<Auth0Client> => {
       display: "popup",
       prompt: "login",
       redirect_uri: window.location.href,
+      audience: config.audience,
     },
   });
 

@@ -8,17 +8,24 @@
   let auth0Client: Auth0Client;
 
   onMount(async () => {
+    let accessToken: string;
     auth0Client = await auth.createClient();
     const auth0User = await auth0Client.getUser();
 
     if (!!auth0User) {
       user.set(auth0User);
+      accessToken = await auth0Client.getTokenSilently();
     } else {
       user.set(null);
+      accessToken = "";
     }
 
     axios
-      .get("http://localhost:3000/")
+      .get("http://localhost:3000/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
         console.log("res", res);
       })
