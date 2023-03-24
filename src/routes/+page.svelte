@@ -4,6 +4,7 @@
   import auth from "../authService";
   import { user } from "../stores/authStore";
   import type { Auth0Client } from "@auth0/auth0-spa-js";
+  import Button from "@smui/button";
 
   let auth0Client: Auth0Client;
 
@@ -43,5 +44,5 @@
   };
 </script>
 
-<button on:click={login}> Login </button>
-<button on:click={logout}> Logout </button>
+<Button on:click={login}>Login</Button>
+<Button on:click={logout}>Logout</Button>
