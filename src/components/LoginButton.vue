@@ -1,7 +1,3 @@
-<template>
-  <button class="button__login" @click="handleLogin">Log In</button>
-</template>
-
 <script setup>
 import { useAuth0 } from '@auth0/auth0-vue'
 
@@ -15,3 +11,7 @@ const handleLogin = () => {
   })
 }
 </script>
+
+<template>
+  <v-btn variant="tonal" color="deep-purple-darken-1" @click="handleLogin">Log In</v-btn>
+</template>
