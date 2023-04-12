@@ -1,13 +1,9 @@
-<template>
-  <button class="button__login" @click="handleLogin">Log In</button>
-</template>
-
-<script setup>
+<script setup lang="ts">
 import { useAuth0 } from '@auth0/auth0-vue'
 
 const { loginWithRedirect } = useAuth0()
 
-const handleLogin = () => {
+const handleLogin = (): void => {
   loginWithRedirect({
     appState: {
       target: '/profile'
@@ -15,3 +11,7 @@ const handleLogin = () => {
   })
 }
 </script>
+
+<template>
+  <v-btn variant="tonal" color="deep-purple-darken-1" @click="handleLogin">Log In</v-btn>
+</template>
