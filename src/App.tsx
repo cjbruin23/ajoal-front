@@ -1,12 +1,10 @@
 import "./App.css";
-import LoginButton from "./components/LoginButton";
-import LogoutButton from "./components/LogoutButton";
+import MainAppBar from "./components/AppBar";
 
 function App() {
   return (
     <>
-      <LoginButton></LoginButton>
-      <LogoutButton></LogoutButton>
+      <MainAppBar></MainAppBar>
     </>
   );
 }
