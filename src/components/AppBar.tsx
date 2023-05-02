@@ -1,6 +1,6 @@
 import { Box, IconButton, Toolbar, AppBar, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import LoginButton from "./LoginButton";
+import LoginButton from "./LoginButton/LoginButton";
 import LogoutButton from "./LogoutButton";
 
 const MainAppBar = () => {
