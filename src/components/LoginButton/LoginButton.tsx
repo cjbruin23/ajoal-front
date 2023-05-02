@@ -3,6 +3,9 @@ import { Button } from "@mui/material";
 import "./LoginButton.css";
 
 const LoginButton = () => {
+  const style = {
+    margin: ".5%",
+  };
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
   if (isAuthenticated) {
@@ -13,7 +16,11 @@ const LoginButton = () => {
     );
   }
   return (
-    <Button variant="contained" onClick={() => loginWithRedirect()}>
+    <Button
+      style={style}
+      variant="contained"
+      onClick={() => loginWithRedirect()}
+    >
       Login
     </Button>
   );
