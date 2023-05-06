@@ -5,18 +5,16 @@ import { useEffect } from "react";
 import axios from "axios";
 
 interface User {
-  userId: string;
+  authId: string;
   nickname: string;
 }
 
 function App() {
   const { isAuthenticated, user } = useAuth0();
-  console.log("isAuthenticated", isAuthenticated);
+
   useEffect(() => {
     if (isAuthenticated) {
-      console.log("make api call here");
-      console.log("use", user);
-      const userData = { userId: user?.sub, nickname: user?.nickname } as User;
+      const userData = { authId: user?.sub, nickname: user?.nickname } as User;
       axios({
         url: "http://localhost:8000/user",
         method: "POST",
@@ -24,6 +22,7 @@ function App() {
       });
     }
   }, [isAuthenticated]);
+
   return (
     <div>
       <MainAppBar></MainAppBar>
