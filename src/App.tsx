@@ -1,10 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
-import MainAppBar from "./components/AppBar";
-import axios from "axios";
-import "./App.css";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
+import MainAppBar from "./components/AppBar/AppBar";
+import axios from "axios";
+import "./App.css";
 
 interface User {
   authId: string;

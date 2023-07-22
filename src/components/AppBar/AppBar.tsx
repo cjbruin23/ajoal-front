@@ -1,6 +1,7 @@
 import { Toolbar, Typography } from "@mui/material";
-import LoginButton from "./LoginButton/LoginButton";
-import LogoutButton from "./LogoutButton";
+import LoginButton from "../LoginButton/LoginButton";
+import LogoutButton from "../LogoutButton";
+import "./AppBar.css";
 
 const MainAppBar = () => {
   return (
