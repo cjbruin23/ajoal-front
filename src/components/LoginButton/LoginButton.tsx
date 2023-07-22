@@ -18,6 +18,7 @@ const LoginButton = () => {
   return (
     <Button
       style={style}
+      color="secondary"
       variant="contained"
       onClick={() => loginWithRedirect()}
     >

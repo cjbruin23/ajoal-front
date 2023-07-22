@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 const LogoutButton = () => {
   const { logout } = useAuth0();
   return (
-    <Button variant="contained" onClick={() => logout()}>
+    <Button variant="contained" color="secondary" onClick={() => logout()}>
       Logout
     </Button>
   );

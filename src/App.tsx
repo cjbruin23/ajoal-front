@@ -3,11 +3,24 @@ import { useEffect } from "react";
 import MainAppBar from "./components/AppBar";
 import axios from "axios";
 import "./App.css";
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@emotion/react";
 
 interface User {
   authId: string;
   nickname: string;
 }
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#000000",
+    },
+    secondary: {
+      main: "#0012c4",
+    },
+  },
+});
 
 function App() {
   const { isAuthenticated, user } = useAuth0();
@@ -24,9 +37,11 @@ function App() {
   }, [isAuthenticated]);
 
   return (
-    <div>
-      <MainAppBar></MainAppBar>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <MainAppBar></MainAppBar>
+      </div>
+    </ThemeProvider>
   );
 }
 
