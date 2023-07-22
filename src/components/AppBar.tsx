@@ -16,10 +16,8 @@ const MainAppBar = () => {
         <MenuIcon />
       </IconButton>
 
-      <Typography variant="h2" component="div" sx={{ flexGrow: 1 }}>
-        <Button variant="text" href="/" color="primary">
-          Periate
-        </Button>
+      <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+        <a href="/">Periate</a>
       </Typography>
       <LoginButton></LoginButton>
       <LogoutButton></LogoutButton>

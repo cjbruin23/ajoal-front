@@ -20,6 +20,9 @@ const theme = createTheme({
       main: "#0012c4",
     },
   },
+  typography: {
+    fontFamily: '"Helvetica Neue"',
+  },
 });
 
 function App() {
