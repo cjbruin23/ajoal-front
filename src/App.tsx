@@ -5,6 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 import MainAppBar from "./components/AppBar/AppBar";
 import axios from "axios";
 import "./App.css";
+import WelcomeBody from "./components/WelcomeBody/WelcomeBody";
 
 interface User {
   authId: string;
@@ -43,6 +44,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div>
         <MainAppBar></MainAppBar>
+        {!isAuthenticated ? <WelcomeBody></WelcomeBody> : <div></div>}
       </div>
     </ThemeProvider>
   );

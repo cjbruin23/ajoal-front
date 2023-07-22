@@ -6,7 +6,7 @@ import "./AppBar.css";
 const MainAppBar = () => {
   return (
     <Toolbar>
-      <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+      <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>
         <a href="/">Periate</a>
       </Typography>
       <LoginButton></LoginButton>
