@@ -1,8 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import MainAppBar from "./components/AppBar";
-import "./App.css";
 import { useEffect } from "react";
+import MainAppBar from "./components/AppBar";
 import axios from "axios";
+import "./App.css";
 
 interface User {
   authId: string;
@@ -16,7 +16,7 @@ function App() {
     if (isAuthenticated) {
       const userData = { authId: user?.sub, nickname: user?.nickname } as User;
       axios({
-        url: "http://localhost:8000/user",
+        url: "http://localhost:8000/users",
         method: "POST",
         data: userData,
       });
