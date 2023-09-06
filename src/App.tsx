@@ -1,7 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@emotion/react";
 import MainAppBar from "./components/AppBar/AppBar";
 import QuestionHome from "./components/QuestionHome/QuestionHome";
 import axios from "axios";
@@ -12,21 +10,6 @@ interface User {
   authId: string;
   nickname: string;
 }
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#000000",
-    },
-    secondary: {
-      main: "#0012c4",
-    },
-  },
-  typography: {
-    fontFamily: '"Helvetica Neue"',
-  },
-});
-
 function App() {
   const { isAuthenticated, user } = useAuth0();
 
@@ -42,7 +25,6 @@ function App() {
   }, [isAuthenticated]);
 
   return (
-    <ThemeProvider theme={theme}>
       <div>
         <MainAppBar></MainAppBar>
         {!isAuthenticated ? (
@@ -51,7 +33,6 @@ function App() {
           <QuestionHome></QuestionHome>
         )}
       </div>
-    </ThemeProvider>
   );
 }
 

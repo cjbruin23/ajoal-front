@@ -1,13 +1,13 @@
-import { Typography } from "@mui/material";
 
 import "./WelcomeBody.css";
 
 const WelcomeBody = () => {
   return (
     <div id="welcome-body">
-      <Typography variant="h6" color="secondary">
+      <h6>
         Welcome to Periate!
-      </Typography>
+
+      </h6>
       <p>Here, we proved experts that can answer your programming questions.</p>
       <p>
         Tired of scouring the internet for answers to your programming related

@@ -1,11 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button } from "@mui/material";
 import "./LoginButton.css";
 
 const LoginButton = () => {
-  const style = {
-    margin: ".5%",
-  };
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
   if (isAuthenticated) {
@@ -16,14 +12,12 @@ const LoginButton = () => {
     );
   }
   return (
-    <Button
-      style={style}
-      color="secondary"
-      variant="contained"
+    <button
+      type="button"
       onClick={() => loginWithRedirect()}
     >
       Login
-    </Button>
+    </button>
   );
 };
 
