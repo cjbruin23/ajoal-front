@@ -10,8 +10,11 @@ const QuestionInputForm = () => {
     switch (fieldName) {
       case 'title':
         setTitleValue(event.target.value);
+        break;
       case 'body':
-        setBodyValue(event.target.value)
+        console.log('body')
+        setBodyValue(event.target.value);
+        break;
     }
   }
 
@@ -22,14 +25,21 @@ const QuestionInputForm = () => {
   }
 
   return <div>
+    <h1 className="font-bold underline">Testing</h1>
     <form onSubmit={handleSubmit}>
-      <label className='ml-1'>Title:
+      <div>
+      <label>Title:
       <input type="text" name='title' value={titleValue} onChange={handleTitleChange} className='ml-1'></input>
       </label>
 
-      <label className='ml-1'>Body:
+      </div>
+
+      <div>
+      <label>Body:
       <input type='textarea' name='body' value={bodyValue}  onChange={handleTitleChange} className='ml-1'></input>
       </label>
+
+      </div>
 
       <button type='submit'>Submit</button>
     </form>
