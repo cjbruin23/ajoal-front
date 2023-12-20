@@ -1,5 +1,6 @@
 import { Auth0Client, createAuth0Client } from "@auth0/auth0-spa-js";
 import "./App.css";
+import { UserState, useUserState } from "./state/user";
 
 let auth0Client: Auth0Client;
 
@@ -11,20 +12,29 @@ const configureClient = async () => {
 };
 
 const login = async () => {
-  console.log("login");
-  console.log("clientId", import.meta.env.VITE_CLIENT_ID);
+  useUserState
   await auth0Client.loginWithPopup();
   const userAuthenticated = await auth0Client.isAuthenticated();
   console.log("userAuthenticated", userAuthenticated);
   console.log("user", await auth0Client.getUser());
 };
 
-const logout = () => {
+const logout = async () => {
   console.log("logout");
+  await auth0Client.logout({
+    logoutParams: {
+      returnTo: window.location.origin
+    }
+  });
+  console.log("userAuthenticated", await auth0Client.isAuthenticated());
+  console.log("user", await auth0Client.getUser());
+
 };
 
 function App() {
   configureClient();
+  const [userStore, setUserStore] = useUserState();
+  console.log((userStore as UserState).isAuthenticated)
 
   return (
     <>
