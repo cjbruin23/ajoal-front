@@ -1,13 +1,15 @@
 import './App.css'
+import Header from './components/header/Header'
 
 function App() {
 
   return (
-    <>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
+    <div>
+    <Header></Header>
+    <h1 className="">
+      Welcome to Periate!
     </h1>
-    </>
+    </div>
   )
 }
 
