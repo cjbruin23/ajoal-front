@@ -1,6 +1,9 @@
-import LoginButton from "../login/LoginButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "../auth/LoginButton";
+import LogoutButton from "../auth/LogoutButton";
 
 function Header() {
+  const { user, isAuthenticated } = useAuth0();
   return (
     <div>
       <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -17,7 +20,11 @@ function Header() {
           <span className="font-semibold text-xl tracking-tight">Ajoal</span>
         </div>
         <div>
-          <LoginButton></LoginButton>
+          {isAuthenticated ? (
+            <LogoutButton></LogoutButton>
+          ) : (
+            <LoginButton></LoginButton>
+          )}
         </div>
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
