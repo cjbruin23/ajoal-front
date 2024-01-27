@@ -20,14 +20,19 @@ function Header() {
           </svg>
           <span className="font-semibold text-xl tracking-tight">Ajoal</span>
         </div>
-        <div>
-          {isAuthenticated ? (
-            <LogoutButton></LogoutButton>
-          ) : (
-            <LoginButton></LoginButton>
-          )}
+        <div className="flex items-center">
+          <div className="mr-2">
+            {isAuthenticated ? (
+              <LogoutButton></LogoutButton>
+            ) : (
+              <LoginButton></LoginButton>
+            )}
+          </div>
+          <div>
+            {isAuthenticated ? <ProfileIcon></ProfileIcon> : <div></div>}
+          </div>
         </div>
-        <div>{isAuthenticated ? <ProfileIcon></ProfileIcon> : <div></div>}</div>
+
         <div className="block lg:hidden">
           <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
             <svg

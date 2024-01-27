@@ -2,4 +2,6 @@
 
 [TailwindCSS](https://tailwindcss.com/)
 
-We get our icons from [here](https://heroicons.com/)
+[Icons](https://heroicons.com/)
+
+[Color Picker](https://htmlcolorcodes.com/color-picker/)
